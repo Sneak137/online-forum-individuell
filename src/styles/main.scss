@@ -1,0 +1,177 @@
+@use 'variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: variables.$font-primary;
+}
+
+/* Layout Grid */
+header {
+    grid-area: header;
+    background-color: variables.$color-primary;
+    font-size: variables.$font-size-xl;
+}
+
+nav {
+    grid-area: navbar;
+    background-color: variables.$color-primary;
+}
+
+main {
+    grid-area: main;
+    background-color: variables.$color-secondary;
+}
+
+footer {
+    grid-area: footer;
+    background-color: variables.$color-highlight;
+    z-index: 10;
+    width: 100%;
+}
+
+.login-form {
+    grid-area: login;
+    background-color: variables.$color-primary;
+    position: relative;
+    right: 0px;
+    top: 0;
+}
+
+header, nav, main, footer {
+    padding: variables.$spacing-m;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    display: flex;
+    gap: variables.$spacing-m;
+    font-weight: bold;
+}
+
+.grid-schema {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: max-content max-content 1fr max-content;
+    grid-template-areas:
+        "header header header"
+        "navbar navbar login"
+        "main main main"
+        "footer footer footer";
+}
+
+.header-padding {
+    padding: variables.$spacing-m;
+}
+
+.thread-container {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-xs;
+    padding: variables.$spacing-m;
+    background-color: rgba(187, 79, 79, 0.071);
+    margin-bottom: variables.$spacing-m;
+    border-radius: 10px;
+    h2 {
+        font-size: variables.$font-size-xl;
+    }
+    .thread-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: variables.$spacing-m;
+    }
+    .thread-login {
+        margin: variables.$spacing-m 0 variables.$spacing-m 0;
+        color: variables.$color-highlight;
+        font-size: variables.$font-size-s;
+    }
+    .thread-title {
+        font-size: variables.$font-size-l;
+    }
+    .thread-nocomments {
+        font-size: variables.$font-size-s;
+        margin: variables.$spacing-xs 0;
+    }
+    .thread-username {
+        font-size: variables.$font-size-xs;
+        margin: variables.$spacing-m 0 0 0;
+    }
+    .thread-timestamp {
+        font-size: variables.$font-size-xs;
+    }
+    .thread-description {
+        margin-top: variables.$spacing-m;
+        font-size: variables.$font-size-m;
+    }
+    &::after {
+        content: "";
+        margin-top: variables.$spacing-m;
+        display: inline;
+        width: 100%;
+        height: 1px;
+        background-color: black;
+    }
+}
+
+.form-thread-question {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-xs;
+    width: 33%;
+}
+
+.form-thread-question textarea {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-xs;
+    height: 94px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    &:hover {
+        color: rgb(255, 68, 47);
+        transform: scale(1.1);
+        transition: variables.$transition-short ease-in-out;
+    }
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
+    background-color: variables.$color-button;
+    color: white;
+    border-radius: variables.$spacing-xs;
+    width: max-content;
+    padding: variables.$spacing-xxs;
+    transition: variables.$transition-short ease-in-out;
+    &:hover {
+        background-color: variables.$color-hover;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.27);
+        color: white;
+    }
+}
+
+.login-form {
+    background-color: variables.$color-primary;
+}
+
+@media (min-width: 768px) {
+    .grid-schema {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "header navbar login"
+            "main main main"
+            "footer footer footer";
+    }
+}
